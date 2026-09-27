@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaden Cruts — Explore the Map</title>
+    <meta name="description" content="Kaden Cruts, Lindbergh class of 2027. Certifications, school, robotics, projects, and the rest of what I do.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=7">
+</head>
+<body>
+    <canvas id="myCanvas"></canvas>
+
+    <header>
+        <div class="brand">
+            <strong>Kaden Cruts</strong>
+            <span>Lindbergh High School, class of 2027</span>
+        </div>
+        <nav id="regionNav" aria-label="Map regions"></nav>
+    </header>
+
+    <div class="hud hud-left">
+        <div class="survey" role="status" aria-live="polite">
+            <span class="survey-label">Sites surveyed</span>
+            <strong id="surveyCount">0 / 0</strong>
+            <div class="survey-bar"><i id="surveyBar"></i></div>
+        </div>
+        <p class="hud-hint">
+            <span>Drag or Arrow Keys</span> to travel &middot; <span>Scroll</span> to zoom &middot;
+            <span>Click</span> a marker to open it
+        </p>
+    </div>
+
+    <div class="hud hud-right">
+        <div class="map-panel">
+            <div class="map-panel-head">
+                <span id="regionReadout">About Me</span>
+                <span id="coordReadout" class="coords">0, 0</span>
+            </div>
+            <div id="minimap" class="minimap" role="group" aria-label="Overview map">
+                <div id="minimapView" class="minimap-view"></div>
+            </div>
+            <div class="map-tools">
+                <button type="button" class="tool" data-tool="zoom-in" aria-label="Zoom in">+</button>
+                <button type="button" class="tool" data-tool="zoom-out" aria-label="Zoom out">&minus;</button>
+                <button type="button" class="tool" data-tool="rotate" aria-label="Rotate the map">&#8635;</button>
+                <button type="button" class="tool" data-tool="flatten" aria-label="Toggle flat view">Flat</button>
+                <button type="button" class="tool tool-wide" data-tool="reset">Overview</button>
+            </div>
+        </div>
+        <button type="button" id="legendToggle" class="legend-toggle">Open index</button>
+    </div>
+
+    <div id="viewport" class="viewport">
+        <div id="world" class="world">
+            <div class="terrain">
+                <div class="terrain-grid"></div>
+                <div class="terrain-glow"></div>
+                <div id="trailLayer" class="trail-layer"></div>
+                <div id="regionLayer" class="region-layer"></div>
+                <div id="labelLayer" class="label-layer"></div>
+            </div>
+            <div id="siteLayer" class="site-layer"></div>
+        </div>
+        <div class="horizon" aria-hidden="true"></div>
+        <div class="vignette" aria-hidden="true"></div>
+    </div>
+
+    <aside id="dossier" class="dossier" role="dialog" aria-modal="false" aria-labelledby="dossierTitle" hidden>
+        <button type="button" class="dossier-close" id="dossierClose" aria-label="Close">&times;</button>
+        <span class="chip" id="dossierKind">Site</span>
+        <h2 id="dossierTitle">Title</h2>
+        <p class="dossier-meta" id="dossierMeta"></p>
+        <img id="dossierImage" class="dossier-image" alt="" hidden>
+        <div class="dossier-body" id="dossierBody"></div>
+        <ul class="tag-row" id="dossierTags"></ul>
+        <div class="dossier-actions" id="dossierActions"></div>
+        <div class="dossier-next">
+            <span>Keep exploring</span>
+            <button type="button" id="dossierNext" class="button-link ghost">Next site nearby</button>
+        </div>
+    </aside>
+
+    <section id="legend" class="legend" aria-label="Index of every site" hidden>
+        <div class="legend-inner">
+            <div class="legend-head">
+                <div>
+                    <h2>Index</h2>
+                    <p>A list of everything on the map, if you would rather read than move around.</p>
+                </div>
+                <button type="button" id="legendClose" class="dossier-close" aria-label="Close index">&times;</button>
+            </div>
+            <div id="legendBody" class="legend-body"></div>
+        </div>
+    </section>
+
+    <div id="compass" class="compass" aria-hidden="true">
+        <i class="compass-needle"></i>
+        <span>N</span>
+    </div>
+
+    <p class="footer-note">&copy; 2026 Kaden Cruts. All rights reserved.</p>
+
+    <div id="intro" class="intro">
+        <div class="intro-inner">
+            <p class="eyebrow">Portfolio</p>
+            <h1>This site is a map.</h1>
+            <p>Each item in the nav is a different area. Drag to move, scroll to zoom, and click a
+            marker to read it. Experience has the certifications, school, and clubs.</p>
+            <button type="button" id="introStart" class="button-link">Open the map</button>
+        </div>
+    </div>
+
+    <script src="script.js?v=7"></script>
+    <script src="content.js?v=9"></script>
+    <script src="world.js?v=9"></script>
+</body>
+</html>
