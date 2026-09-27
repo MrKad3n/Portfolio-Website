@@ -385,7 +385,9 @@ const SITES = [
         meta: ['Education', 'Web & Computer Programming', 'Class of 2027'],
         body: `
             <p>South Tech Academy, Web and Computer Programming, class of 2027. The IT Specialist
-            certifications and the SkillsUSA web design entry are from this program.</p>
+            certifications and the SkillsUSA web design entry are from this program.
+            
+            The photo is my class and I at Six Flags.</p>
         `,
         tags: ['Web', 'Programming', 'Class of 2027']
     },
